@@ -1,0 +1,6 @@
+function brand(t){ctx.save();owl(458,212,.32,t,{ph:1.3});T('كُن أفضل',600,205,46,C.cream,{w:800,a:.9});ctx.restore()}
+
+window.render=t=>{bg(t);scenes(t);caption(t);brand(t);finish()};
+window.DUR=DUR;
+window.ready=Promise.all([600,700,800,900].map(w=>document.fonts.load(`${w} 40px Cairo`,'كن أفضل'))).then(()=>document.fonts.ready).then(()=>{render(0);return true});
+</script></body></html>
