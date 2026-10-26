@@ -1,7 +1,7 @@
 const CAPY=1400;
 function caption(t){
   for(let i=0;i<P.length;i++){const [a,b,txt,hl,hc]=P[i];if(!txt)continue;
-    let next=P.slice(i+1).find(p=>p[2]);let endV=Math.min(b+.75,next?next[0]-.04:99);
+    let next=P.slice(i+1).find(p=>p[2]);let nph=(typeof PH!=="undefined")?PH.find(p=>p[0]>a+.05):null;let endV=Math.min(b+(window.CAPHOLD||.75),next?next[0]-.04:99,nph?nph[0]-.02:99);
     if(t<a-.05||t>endV)continue;
     const fo=1-eio(seg(t,endV-.18,endV));
     const ws=txt.split(' ');font(800,70);const sp=ctx.measureText(' ').width;

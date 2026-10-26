@@ -68,3 +68,12 @@ function pinIc(x,y,s,a){if(a<=0||s<=0)return;ctx.save();ctx.globalAlpha=a;ctx.tr
 function sofa(x,y,s,a){if(a<=0||s<=0)return;ctx.save();ctx.globalAlpha=a;ctx.translate(x,y);ctx.scale(s,s);ctx.fillStyle=C.cream;rrect(-60,-30,120,40,12);ctx.fill();rrect(-75,0,150,30,10);ctx.fill();rrect(-80,-20,22,55,10);ctx.fill();rrect(58,-20,22,55,10);ctx.fill();ctx.restore()}
 function slotCard(x,y,s,a,label,val,col,draw){if(a<=0||s<=0)return;ctx.save();ctx.globalAlpha=a;ctx.translate(x,y);ctx.scale(s,s);ctx.fillStyle='rgba(28,36,54,.95)';rrect(-420,-75,840,150,34);ctx.fill();ctx.strokeStyle=col;ctx.lineWidth=4;ctx.stroke();
   font(800,40);ctx.direction='rtl';ctx.textAlign='right';ctx.textBaseline='middle';ctx.fillStyle=C.muted;ctx.fillText(label,380,0);font(900,54);ctx.fillStyle=col;ctx.fillText(val,230,2);ctx.restore();if(draw)draw(x-330*s,y,s)}
+
+// owl with moods: 'tired' | 'happy' | 'normal'
+function owlM(x,y,s,t,o={}){owl(x,y,s,t,o);if(!o.mood||o.mood=='normal'||s<=0)return;const a=o.a===undefined?1:o.a;ctx.save();ctx.globalAlpha=a;ctx.translate(x,y);ctx.scale(s,s);ctx.rotate(o.tilt||0);
+  if(o.mood=='tired'){[-38,38].forEach(dx=>{ctx.fillStyle='#c98a3a';ctx.beginPath();ctx.arc(dx,-38,34,Math.PI,0);ctx.fill();ctx.fillRect(dx-34,-40,68,6);ctx.strokeStyle='#8a5320';ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(dx-30,-34);ctx.lineTo(dx+30,-34);ctx.stroke()});
+    const zz=(t*0.8)%1;ctx.globalAlpha=a*(1-zz);font(900,40);ctx.fillStyle=C.cream;ctx.fillText('z',90+zz*30,-110-zz*60);}
+  if(o.mood=='happy'){[-38,38].forEach(dx=>{ctx.fillStyle='#fff8ea';ctx.beginPath();ctx.arc(dx,-38,33,0,7);ctx.fill();ctx.strokeStyle='#1a1d29';ctx.lineWidth=8;ctx.lineCap='round';ctx.beginPath();ctx.arc(dx,-28,16,Math.PI*1.15,Math.PI*1.85);ctx.stroke()});
+    ctx.fillStyle='rgba(232,102,79,.45)';[-70,70].forEach(dx=>{ctx.beginPath();ctx.ellipse(dx,0,16,9,0,0,7);ctx.fill()})}
+  ctx.restore()}
+function plane(x,y,s,a,rot=0){if(a<=0||s<=0)return;ctx.save();ctx.globalAlpha=a;ctx.translate(x,y);ctx.rotate(rot);ctx.scale(s,s);ctx.fillStyle=C.amber;ctx.shadowColor=C.amber;ctx.shadowBlur=24;ctx.beginPath();ctx.moveTo(-60,10);ctx.lineTo(70,-50);ctx.lineTo(20,60);ctx.lineTo(5,20);ctx.closePath();ctx.fill();ctx.fillStyle='#b9772c';ctx.beginPath();ctx.moveTo(5,20);ctx.lineTo(70,-50);ctx.lineTo(0,40);ctx.closePath();ctx.fill();ctx.restore()}
