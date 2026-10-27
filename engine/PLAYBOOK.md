@@ -17,3 +17,13 @@ Rules for every reel
 8. Judge by rates: avg watch %, sends/reach, follows/reach, not raw views.
 9. Later: Trial Reels to test 2 hooks of the same idea (counts toward the 20/month Metricool plan).
 10. User should reply to comments in the first hour.
+
+## Style decision (2026-10-27): LINE-ART is the approved style
+User rejected: cartoon owl reels, nature+quote clips, the v2 cartoon scene style.
+Approved "for now": minimal line-art (engine/lineart/la.html):
+- One continuous white line that morphs scene to scene (resampled polylines), no hard cuts; ends by morphing back to the first shape (loop).
+- Muted blue bg (#1e3a4c->#152a38), paper grain, vignette; ONE accent color amber #f2c063 only on the key element.
+- Amiri font, two lines at top (96px cream + 112px amber), synced to Rawi voice phrase timing.
+- Rawi voice (eleven_v4) + calm piano bed engine/music_calm.mp3 at about -26 LUFS under voice, final -14.
+- Silent end card: "أرسلها لـ..." naming a kind of friend.
+- ElevenLabs: generate via creative_add_flow_node + creative_run_flow_nodes (direct generate tools return 429).
