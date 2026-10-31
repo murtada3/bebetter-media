@@ -27,3 +27,8 @@ Approved "for now": minimal line-art (engine/lineart/la.html):
 - Rawi voice (eleven_v4) + calm piano bed engine/music_calm.mp3 at about -26 LUFS under voice, final -14.
 - Silent end card: "أرسلها لـ..." naming a kind of friend.
 - ElevenLabs: generate via creative_add_flow_node + creative_run_flow_nodes (direct generate tools return 429).
+
+## Status 2026-10-31
+- Switched to CLIPPING (engine/clip, skill bebetter-clip). First clip (James Clear, clip-01.mp4) scheduled Sat Oct 31 18:00 Baghdad, IG+TikTok.
+- PAUSED: user said post nothing else until he reviews this clip's results and says so. No daily task is running.
+- October budget after this post: 16 of 20 per-network counts.
