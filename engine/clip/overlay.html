@@ -1,0 +1,17 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Cairo;font-weight:800;src:url(fonts/cairo-arabic-800-normal.woff2)}
+@font-face{font-family:Cairo;font-weight:600;src:url(fonts/cairo-arabic-600-normal.woff2)}
+html,body{margin:0;background:transparent}</style></head><body><canvas id=c width=1080 height=1920></canvas><script>
+const c=document.getElementById('c'),x=c.getContext('2d');
+function T(s,X,Y,size,col,w=800,al='center',stroke=0){x.font=`${w} ${size}px Cairo`;let m=x.measureText(s).width;if(m>960){size*=960/m;x.font=`${w} ${size}px Cairo`}x.textAlign=al;x.direction='rtl';x.textBaseline='middle';if(stroke){x.lineJoin='round';x.lineWidth=stroke;x.strokeStyle='rgba(0,0,0,.85)';x.strokeText(s,X,Y)}x.shadowColor='rgba(0,0,0,.5)';x.shadowBlur=stroke?10:0;x.fillStyle=col;x.fillText(s,X,Y);x.shadowBlur=0}
+function TA(a,b,X,Y,size){ // two-colour line: a white then b amber (rtl: a on right)
+ x.font=`800 ${size}px Cairo`;x.direction='rtl';const wa=x.measureText(a).width,wb=x.measureText(b).width;let tot=wa+wb;if(tot>960){size*=960/tot;x.font=`800 ${size}px Cairo`}
+ const W2=x.measureText(a).width+x.measureText(b).width;const right=X+W2/2;x.textAlign='right';x.textBaseline='middle';x.lineJoin='round';x.lineWidth=12;x.strokeStyle='rgba(0,0,0,.85)';
+ x.strokeText(a,right,Y);x.fillStyle='#fff';x.fillText(a,right,Y);const ra=right-x.measureText(a).width;x.strokeText(b,ra,Y);x.fillStyle='#f2c063';x.fillText(b,ra,Y)}
+window.draw=(k,arg)=>{x.clearRect(0,0,1080,1920);
+ if(k=='header'){x.fillStyle='#152a38';x.fillRect(0,0,1080,250);T(arg,540,160,70,'#f2c063');T('كُن أفضل',1000,58,30,'rgba(243,239,230,.65)',600,'right');}
+ if(k=='credit'){x.font='600 30px Cairo';const cw=Math.min(980,x.measureText(arg).width+60);x.fillStyle='rgba(0,0,0,.45)';x.beginPath();x.roundRect(40,280,cw,64,32);x.fill();T(arg,40+cw/2,313,30,'#fff',600);}
+ if(k=='sub'){const [a,b]=arg;if(b)TA(a,b,540,1565,66);else T(a,540,1565,66,'#fff',800,'center',12);}
+ if(k=='note'){x.fillStyle='rgba(242,192,99,.96)';x.beginPath();x.roundRect(80,1300,920,160,30);x.fill();T(arg[0],540,1340,40,'#1a1d29');T(arg[1],540,1410,48,'#1a1d29');}
+};
+</script></body></html>
